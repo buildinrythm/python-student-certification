@@ -67,10 +67,33 @@ def processCandidate():
             overallOutcome
         )
 
+        writeToCsv(
+            candidateName,
+            certificationName,
+            moduleNames,
+            moduleResults
+        )
+
+
     except ValueError:
         print("ERR003: Invalid input. Numeric result expected.")
     except Exception as error:
         print("ERR004: Error processing candidate.", error)
+
+def writeToCsv(candidateName, certificationName, modules, results):
+    try:
+        with open("certificationResults.csv", "a") as file:
+            row = candidateName + "," + certificationName
+
+            for i in range(len(modules)):
+                row += f",{modules[i]},{results[i]}"
+
+            file.write(row + "\n")
+            print("File written successfully")
+
+    except Exception as error:
+        print("ERR007: Failed to write to CSV file.", error)
+
 
 
 def printCertificate(candidateName, certificationName, modules, results, average, overallOutcome):
