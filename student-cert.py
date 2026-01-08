@@ -77,3 +77,16 @@ def print_certificate(name, cert_name, modules, results, average, overall):
     print(f"\nOverall Average: {float(average):.2f}%")
     print(f"Final Outcome: {overall}")
     print("======================================\n")
+
+def main():
+    display_welcome()
+
+    run_again = "Y"
+    while run_again.upper() == "Y":
+        process_candidate()
+        run_again = input("Enter results for another candidate [Y/N]? ")
+
+    print("\nSystem exiting. Goodbye!")
+
+
+main()
