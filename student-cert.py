@@ -2,12 +2,13 @@
 # Student Certification Processing System
 # ----------------------------------------
 
-def display_welcome():
+def displayWelcome():
     print("======================================")
     print(" Welcome to the Certification System ")
     print("======================================\n")
 
-def get_grade_and_result(score):
+
+def getGradeAndOutcome(score):
     if 70 <= score <= 100:
         return "A", "Pass"
     elif 60 <= score <= 69:
@@ -19,11 +20,12 @@ def get_grade_and_result(score):
     else:
         return "E", "Fail"
 
-def process_candidate():
-    candidate_name = input("Enter candidate name: ")
-    certification_name = input("Enter certification name: ")
 
-    module_names = [
+def processCandidate():
+    candidateName = input("Enter candidate name: ")
+    certificationName = input("Enter certification name: ")
+
+    moduleNames = [
         "Databases",
         "Programming",
         "Web Development",
@@ -31,31 +33,32 @@ def process_candidate():
         "Systems Analysis"
     ]
 
-    module_results = []
-    total_score = 0
+    moduleResults = []
+    totalScore = 0
 
     print("\nEnter module results:")
 
-    for module in module_names:
+    for module in moduleNames:
         score = int(input(f"{module} result: "))
-        module_results.append(score)
-        total_score += score
+        moduleResults.append(score)
+        totalScore += score
 
-    average = total_score / len(module_names)
+    average = totalScore / len(moduleNames)
 
     if average >= 50:
-        overall_result = "PASS"
+        overallOutcome = "PASS"
     else:
-        overall_result = "FAIL"
+        overallOutcome = "FAIL"
 
-    print_certificate(
-        candidate_name,
-        certification_name,
-        module_names,
-        module_results,
+    printCertificate(
+        candidateName,
+        certificationName,
+        moduleNames,
+        moduleResults,
         average,
-        overall_result
+        overallOutcome
     )
+
 
 def printCertificate(candidateName, certificationName, modules, results, average, overallOutcome):
     print("\n==============================================")
@@ -83,13 +86,14 @@ def printCertificate(candidateName, certificationName, modules, results, average
     print(f"{'Final Result':20} {overallOutcome}")
     print("==============================================\n")
 
-def main():
-    display_welcome()
 
-    run_again = "Y"
-    while run_again.upper() == "Y":
-        process_candidate()
-        run_again = input("Enter results for another candidate [Y/N]? ")
+def main():
+    displayWelcome()
+
+    runAgain = "Y"
+    while runAgain.upper() == "Y":
+        processCandidate()
+        runAgain = input("Enter results for another candidate [Y/N]? ")
 
     print("\nSystem exiting. Goodbye!")
 
