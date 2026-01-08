@@ -2,6 +2,7 @@
 # Student Certification Processing System
 # ----------------------------------------
 
+# Function to display welcome message
 def displayWelcome():
     try:
         print("======================================")
@@ -10,7 +11,7 @@ def displayWelcome():
     except Exception as error:
         print("ERR001: Failed to display welcome message.", error)
 
-
+# Function to calculate grade 
 def getGradeAndOutcome(score):
     try:
         if 70 <= score <= 100:
@@ -27,7 +28,7 @@ def getGradeAndOutcome(score):
         print("ERR002: Grade calculation failed.", error)
         return "N/A", "Error"
 
-
+#Function to process candidate input
 def processCandidate():
     try:
         candidateName = input("Enter candidate name: ")
@@ -80,6 +81,7 @@ def processCandidate():
     except Exception as error:
         print("ERR004: Error processing candidate.", error)
 
+# Function to write to CSV
 def writeToCsv(candidateName, certificationName, modules, results):
     try:
         with open("certificationResults.csv", "a") as file:
@@ -95,7 +97,7 @@ def writeToCsv(candidateName, certificationName, modules, results):
         print("ERR007: Failed to write to CSV file.", error)
 
 
-
+# Function to log certificate
 def printCertificate(candidateName, certificationName, modules, results, average, overallOutcome):
     try:
         print("\n==============================================")
@@ -124,7 +126,7 @@ def printCertificate(candidateName, certificationName, modules, results, average
     except Exception as error:
         print("ERR005: Failed to print certificate.", error)
 
-
+# Main function
 def main():
     try:
         displayWelcome()
