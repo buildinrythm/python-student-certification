@@ -57,26 +57,31 @@ def process_candidate():
         overall_result
     )
 
-def print_certificate(name, cert_name, modules, results, average, overall):
-    print("\n======================================")
-    print("        CERTIFICATION RESULT")
-    print("======================================")
-    print(f"Candidate Name: {name}")
-    print(f"Certification: {cert_name}\n")
+def printCertificate(candidateName, certificationName, modules, results, average, overallOutcome):
+    print("\n==============================================")
+    print("             CERTIFICATION RESULT")
+    print("==============================================")
+    print(f"Candidate Name : {candidateName}")
+    print(f"Certification  : {certificationName}\n")
 
-    print("Module Results:")
+    # Table header
+    print(f"{'Module':20} {'Result':>6} {'Grade':>7} {'Outcome':>10}")
+    print("-" * 45)
+
+    # Table rows
     for i in range(len(modules)):
-        grade, result = get_grade_and_result(results[i])
+        grade, outcome = getGradeAndOutcome(results[i])
         print(
             f"{modules[i]:20} "
-            f"Score: {results[i]:3}% "
-            f"Grade: {grade} "
-            f"Result: {result}"
+            f"{results[i]:>6}% "
+            f"{grade:>7} "
+            f"{outcome:>10}"
         )
 
-    print(f"\nOverall Average: {float(average):.2f}%")
-    print(f"Final Outcome: {overall}")
-    print("======================================\n")
+    print("-" * 45)
+    print(f"{'Overall Average':20} {average:>6.2f}%")
+    print(f"{'Final Result':20} {overallOutcome}")
+    print("==============================================\n")
 
 def main():
     display_welcome()
